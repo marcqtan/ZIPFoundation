@@ -106,11 +106,11 @@ public struct Entry: Equatable {
     }
     /// The `path` of the receiver within a ZIP `Archive`.
     public var path: String {
-        let dosLatinUS = 0x400
-        let dosLatinUSEncoding = CFStringEncoding(dosLatinUS)
-        let dosLatinUSStringEncoding = CFStringConvertEncodingToNSStringEncoding(dosLatinUSEncoding)
-        let codepage437 = String.Encoding(rawValue: dosLatinUSStringEncoding)
-        let encoding = self.centralDirectoryStructure.usesUTF8PathEncoding ? .utf8 : codepage437
+//        let dosLatinUS = 0x400
+//        let dosLatinUSEncoding = CFStringEncoding(dosLatinUS)
+//        let dosLatinUSStringEncoding = CFStringConvertEncodingToNSStringEncoding(dosLatinUSEncoding)
+//        let codepage437 = String.Encoding(rawValue: dosLatinUSStringEncoding)
+        let encoding = self.centralDirectoryStructure.usesUTF8PathEncoding ? .utf8 : String.Encoding.shiftJIS
         return self.path(using: encoding)
     }
     /// The file attributes of the receiver as key/value pairs.
